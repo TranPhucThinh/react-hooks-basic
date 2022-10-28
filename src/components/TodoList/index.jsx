@@ -6,7 +6,7 @@ TodoList.propTypes = {
   onTodoClick: PropTypes.func,
 };
 
-TodoList.default = {
+TodoList.defaultProps = {
   todoList: [],
   onTodoClick: null,
 };

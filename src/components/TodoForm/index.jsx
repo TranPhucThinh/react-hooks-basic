@@ -6,7 +6,7 @@ TodoForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-TodoForm.default = {
+TodoForm.defaultProps = {
   onSubmit: null,
 };
 
