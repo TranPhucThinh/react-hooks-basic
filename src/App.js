@@ -7,6 +7,8 @@ import TodoList from './components/TodoList';
 import queryString from 'query-string';
 import PostFiltersForm from './components/PostFiltersForm';
 import Clock from './components/Clock';
+import BetterClock from './components/BetterClock';
+import MagicBox from './components/MagicBox';
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -89,9 +91,12 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Clock</h2>
+      <h2>MagicBox</h2>
 
-      <Clock />
+      <MagicBox />
+
+      {/* <Clock />
+      <BetterClock /> */}
 
       {/* <PostFiltersForm onSubmit={handleFiltersChange} />
 
