@@ -5,6 +5,7 @@ import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
 import queryString from 'query-string';
+import PostFiltersForm from './components/PostFiltersForm';
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -22,7 +23,9 @@ function App() {
   const [filters, setFilters] = useState({
     _limit: 10,
     _page: 1,
+    title_like: '',
   });
+  console.log('🚀 ~ file: App.js ~ line 28 ~ App ~ filters', filters);
 
   useEffect(() => {
     async function fetchPostList() {
@@ -32,7 +35,6 @@ function App() {
         const requestUrl = `http://js-post-api.herokuapp.com/api/posts?${paramString}`;
         const response = await fetch(requestUrl);
         const responseJSON = await response.json();
-        console.log({ responseJSON });
 
         const { data, pagination } = responseJSON;
 
@@ -47,13 +49,17 @@ function App() {
   }, [filters]);
 
   const handlePageChange = (newPage) => {
-    console.log(
-      '🚀 ~ file: App.js ~ line 41 ~ handlePageChange ~ newPage',
-      newPage
-    );
     setFilters({
       ...filters,
       _page: newPage,
+    });
+  };
+
+  const handleFiltersChange = (newFilters) => {
+    setFilters({
+      ...filters,
+      _page: 1,
+      title_like: newFilters.searchTerm,
     });
   };
 
@@ -84,6 +90,9 @@ function App() {
   return (
     <div className="App">
       <h2>Post List</h2>
+
+      <PostFiltersForm onSubmit={handleFiltersChange} />
+
       <PostList posts={postList} />
       <Pagination pagination={pagination} onPageChange={handlePageChange} />
 
