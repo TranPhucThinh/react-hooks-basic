@@ -6,6 +6,7 @@ import TodoList from './components/TodoList';
 
 import queryString from 'query-string';
 import PostFiltersForm from './components/PostFiltersForm';
+import Clock from './components/Clock';
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -25,7 +26,6 @@ function App() {
     _page: 1,
     title_like: '',
   });
-  console.log('🚀 ~ file: App.js ~ line 28 ~ App ~ filters', filters);
 
   useEffect(() => {
     async function fetchPostList() {
@@ -89,12 +89,14 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Post List</h2>
+      <h2>Clock</h2>
 
-      <PostFiltersForm onSubmit={handleFiltersChange} />
+      <Clock />
+
+      {/* <PostFiltersForm onSubmit={handleFiltersChange} />
 
       <PostList posts={postList} />
-      <Pagination pagination={pagination} onPageChange={handlePageChange} />
+      <Pagination pagination={pagination} onPageChange={handlePageChange} /> */}
 
       {/* <h2>Todo List</h2> */}
       {/* <TodoForm onSubmit={handleTodoFormSubmit} /> */}
